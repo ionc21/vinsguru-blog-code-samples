@@ -2,7 +2,7 @@ package com.vinsguru.cqrspattern.service.impl;
 
 import com.vinsguru.cqrspattern.entity.Product;
 import com.vinsguru.cqrspattern.entity.PurchaseOrder;
-import com.vinsguru.cqrspattern.entity.User;
+import com.vinsguru.cqrspattern.entity.Customer;
 import com.vinsguru.cqrspattern.repository.ProductRepository;
 import com.vinsguru.cqrspattern.repository.PurchaseOrderRepository;
 import com.vinsguru.cqrspattern.repository.UserRepository;
@@ -30,20 +30,16 @@ public class OrderCommandServiceImpl implements OrderCommandService {
     @Autowired
     private PurchaseOrderRepository purchaseOrderRepository;
 
-    private List<User> users;
+    private List<Customer> customers;
     private List<Product> products;
-
-    @PostConstruct
-    private void init(){
-        this.users = this.userRepository.findAll();
-        this.products = this.productRepository.findAll();
-    }
 
     @Override
     public void createOrder(int userIndex, int productIndex) {
+        this.customers = this.userRepository.findAll();
+        this.products = this.productRepository.findAll();
         PurchaseOrder purchaseOrder = new PurchaseOrder();
         purchaseOrder.setProductId(this.products.get(productIndex).getId());
-        purchaseOrder.setUserId(this.users.get(userIndex).getId());
+        purchaseOrder.setUserId(this.customers.get(userIndex).getId());
         this.purchaseOrderRepository.save(purchaseOrder);
     }
 

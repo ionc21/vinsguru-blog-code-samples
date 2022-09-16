@@ -3,8 +3,8 @@ package com.vinsguru.cqrspattern.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "customer")
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
