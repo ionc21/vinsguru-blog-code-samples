@@ -21,6 +21,6 @@ spring:
 
 app:
   write:
-    enabled: false
+    enabled: true
 
 

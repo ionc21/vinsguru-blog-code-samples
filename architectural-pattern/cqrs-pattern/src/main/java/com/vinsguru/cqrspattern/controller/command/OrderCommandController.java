@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("po")
-@ConditionalOnProperty(name = "app.write.enabled", havingValue = "true")
+@ConditionalOnProperty(name = "app.write.enabled", havingValue = "false")
 public class OrderCommandController {
 
     @Autowired
